@@ -1,70 +1,70 @@
 [
     {
         "title": "Pride and Prejudice",
-        "postedBy": "Jane Austen",
+        "userId": 1,
         "content": "It is a truth universally acknowledged, that a single man in possession of a good fortune, must be in want of a wife. However little known the feelings or views of such a man may be on his first entering a neighbourhood, this truth is so well fixed in the minds of the surrounding families, that he is considered as the rightful property of some one or other of their daughters. 'My dear Mr. Bennet,' said his lady to him one day, 'have you heard that Netherfield Park is let at last?' Mr. Bennet replied that he had not. 'But it is,' returned she; 'for Mrs. Long has just been here, and she told me all about it.' Mr. Bennet made no answer. 'Do not you want to know who has taken it?' cried his wife impatiently. 'You want to tell me, and I have no objection to hearing it.' This was invitation enough. 'Why, my dear, you must know, Mrs. Long says that Netherfield is taken by a young man of large fortune from the north of England; that he came down on Monday in a chaise and four to see the place, and was so much delighted with it that he agreed with Mr. Morris immediately.'",
         "categoryId": 1,
         "createdOn": "2024-02-04T12:00:00Z"
     },
     {
         "title": "Frankenstein",
-        "postedBy": "Mary Shelley",
+        "userId": 2,
         "content": "I am by birth a Genevese; and my family is one of the most distinguished of that republic. My ancestors had been for many years counsellors and syndics; and my father had filled several public situations with honour and reputation. He was respected by all who knew him for his integrity and indefatigable attention to public business. He passed his younger days perpetually occupied by the affairs of his country; and it was not until the decline of life that he thought of marrying, and bestowing on the state sons who might carry his virtues and his name down to posterity. As the circumstances of his marriage illustrate his character, I cannot refrain from relating them. One of his most intimate friends was a merchant, who, from a flourishing state, fell, through numerous mischances, into poverty. This man, whose name was Beaufort, was of a proud and unbending disposition, and could not bear to live in misfortune and oblivion in the same country where he had formerly been distinguished for his rank and magnificence. Having paid his debts, therefore, in the most honourable manner, he retreated with his daughter to the town of Lucerne, where he lived unknown and in wretchedness.",
         "categoryId": 2,
         "createdOn": "2024-02-04T12:00:00Z"
     },
     {
         "title": "Jane Eyre",
-        "postedBy": "Charlotte Brontë",
+        "userId": 3,
         "content": "There was no possibility of taking a walk that day. We had been wandering, indeed, in the leafless shrubbery an hour in the morning; but since dinner (Mrs. Reed, when there was no company, dined early) the cold winter wind had brought with it clouds so sombre, and a rain so penetrating, that further out-door exercise was now out of the question. I was glad of it: I never liked long walks, especially on chilly afternoons: dreadful to me was the coming home in the raw twilight, with nipped fingers and toes, and a heart saddened by the chidings of Bessie, the nurse, and humbled by the consciousness of my physical inferiority to Eliza, John, and Georgiana Reed. The said Eliza, John, and Georgiana were now clustered round their mama in the drawing-room: she lay reclined on a sofa by the fireside, and with her darlings about her (for the time neither quarrelling nor crying) looked perfectly happy. Me, she had dispensed from joining the group; saying, 'She regretted to be under the necessity of keeping me at a distance; but that until she heard from Bessie, and could discover by her own observation, that I was endeavouring in good earnest to acquire a more sociable and childlike disposition.'",
         "categoryId": 1,
         "createdOn": "2024-02-04T12:00:00Z"
     },
     {
         "title": "The Picture of Dorian Gray",
-        "postedBy": "Oscar Wilde",
+        "userId": 4,
         "content": "The studio was filled with the rich odour of roses, and when the light summer wind stirred amidst the trees of the garden, there came through the open door the heavy scent of the lilac, or the more delicate perfume of the pink-flowering thorn. From the corner of the divan of Persian saddle-bags on which he was lying, smoking, as was his custom, innumerable cigarettes, Lord Henry Wotton could just catch the gleam of the honey-sweet and honey-coloured blossoms of a laburnum, whose tremulous branches seemed hardly able to bear the burden of a beauty so flamelike as theirs; and now and then the fantastic shadows of birds in flight flitted across the long tussore-silk curtains that were stretched in front of the huge window, producing a kind of momentary Japanese effect, and making him think of those pallid, jade-faced painters of Tokyo who, through the medium of an art that is necessarily static, seek to convey the sensation of swiftness and motion. The sullen murmur of the bees shouldering their way through the long unmown grass, or circling with monotonous insistence round the dusty gilt horns of the straggling woodbine, seemed to make the stillness more oppressive. The dim roar of London was like the bourdon note of a distant organ.",
         "categoryId": 2,
         "createdOn": "2024-02-04T12:00:00Z"
     },
     {
         "title": "Alice's Adventures in Wonderland",
-        "postedBy": "Lewis Carroll",
+        "userId": 5,
         "content": "Alice was beginning to get very tired of sitting by her sister on the bank, and of having nothing to do: once or twice she had peeped into the book her sister was reading, but it had no pictures or conversations in it, 'and what is the use of a book,' thought Alice 'without pictures or conversations?' So she was considering in her own mind (as well as she could, for the hot day made her feel very sleepy and stupid), whether the pleasure of making a daisy-chain would be worth the trouble of getting up and picking the daisies, when suddenly a White Rabbit with pink eyes ran close by her. There was nothing so very remarkable in that; nor did Alice think it so very much out of the way to hear the Rabbit say to itself, 'Oh dear! Oh dear! I shall be late!' (when she thought it over afterwards, it occurred to her that she ought to have wondered at this, but at the time it all seemed quite natural); but when the Rabbit actually took a watch out of its waistcoat-pocket, and looked at it, and then hurried on, Alice started to her feet, for it flashed across her mind that she had never before seen a rabbit with either a waistcoat-pocket, or a watch to take out of it.",
         "categoryId": 3,
         "createdOn": "2024-02-04T12:00:00Z"
     },
     {
         "title": "The Adventures of Sherlock Holmes",
-        "postedBy": "Arthur Conan Doyle",
+        "userId": 6,
         "content": "To Sherlock Holmes she is always THE woman. I have seldom heard him mention her under any other name. In his eyes she eclipses and predominates the whole of her sex. It was not that he felt any emotion akin to love for Irene Adler. All emotions, and that one particularly, were abhorrent to his cold, precise but admirably balanced mind. He was, I take it, the most perfect reasoning and observing machine that the world has seen, but as a lover he would have placed himself in a false position. He never spoke of the softer passions, save with a gibe and a sneer. They were admirable things for the observer—excellent for drawing the veil from men’s motives and actions. But for the trained reasoner to admit such intrusions into his own delicate and finely adjusted temperament was to introduce a distracting factor which might throw a doubt upon all his mental results.",
         "categoryId": 4,
         "createdOn": "2024-02-04T12:00:00Z"
     },
     {
         "title": "The Time Machine",
-        "postedBy": "H. G. Wells",
+        "userId": 7,
         "content": "You must follow me carefully. I shall have to controvert one or two ideas that are almost universally accepted. The geometry, for instance, they taught you at school is founded on a misconception. Nor do the mathematical diagrams represent anything that actually exists. You know of course that a mathematical line, a line of thickness nil, has no real existence. They taught you that? Neither has a mathematical plane. These things are mere abstractions. Any real body must have extension in four directions: it must have Length, Breadth, Thickness, and—Duration.",
         "categoryId": 5,
         "createdOn": "2024-02-04T12:00:00Z"
     },
     {
         "title": "Three Men in a Boat",
-        "postedBy": "Jerome K. Jerome",
+        "userId": 8,
         "content": "I remember going to the British Museum one day to read up the treatment for some slight ailment of which I had a touch—hay fever, I fancy it was. I got down the book, and read all I came to read; and then, in an unthinking moment, I idly turned the leaves, and began to indolently study diseases, generally. I forget which was the first distemper I plunged into—some fearful, devastating scourge, I know—and, before I had glanced half down the list of 'premonitory symptoms,' it was borne in upon me that I had fairly got it.",
         "categoryId": 6,
         "createdOn": "2024-02-04T12:00:00Z"
     },
     {
         "title": "The War of the Worlds",
-        "postedBy": "H. G. Wells",
+        "userId": 7,
         "content": "No one would have believed in the last years of the nineteenth century that this world was being watched keenly and closely by intelligent beings from another world. Yet, across the gulf of space, minds that are to our minds as ours are to those of the beasts that perish, intellects vast and cool and unsympathetic, regarded this earth with envious eyes, and slowly and surely drew their plans against us. And early in the twentieth century came the great disillusionment.",
         "categoryId": 5,
         "createdOn": "2024-02-04T12:00:00Z"
     },
     {
         "title": "The Wood Beyond the World",
-        "postedBy": "William Morris",
+        "userId": 9,
         "content": "Then the Golden Knight took his way through the flowery grass; and so it was, that his mind was all set on that same vision of the three, and he was longing to see them again. Thus he went his ways, and it was now about mid-morning. He looked about him, and saw how the mountains, that seemed so far away, were now come closer to him; and they were great and awful to look on. He went on yet, and the land became more and more like a garden, and the air was sweet with the scent of flowers; and at last he saw before him a thicket of rose-bushes, and he went toward it.",
         "categoryId": 3,
         "createdOn": "2024-02-04T12:00:00Z"

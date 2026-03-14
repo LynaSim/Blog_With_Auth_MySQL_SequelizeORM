@@ -6,8 +6,8 @@ const { Post, Category, User } = require("../models/index");
 // Route to add a new post
 router.post("/", async (req, res) => {
   try {
-    const { title, content, postedBy , categoryId, userId } = req.body;
-    const post = await Post.create({ title, content, postedBy, categoryId, userId });
+    const { title, content, categoryId, userId } = req.body; // removed postedBy
+    const post = await Post.create({ title, content, categoryId, userId }); // removed postedBy
 
     res.status(200).json(post);
   } catch (error) {
@@ -26,7 +26,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-// Route to perform a join between Post and Category to get posts with category names
+// Route to perform a join between Post, Category, and User to get posts with category name and username
 router.get("/with-details", async (req, res) => {
   try {
     const posts = await Post.findAll({
@@ -47,7 +47,6 @@ router.get("/with-details", async (req, res) => {
     res.status(500).json({ error: "Error retrieving posts with categories", error });
   }
 });
-
 
 // export the router
 module.exports = router;

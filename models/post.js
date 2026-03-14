@@ -13,7 +13,6 @@ Post.init(
         key: 'id',
       },     
     },
-
     title: {
       type: DataTypes.TEXT,
       allowNull: false,
@@ -22,10 +21,10 @@ Post.init(
       type: DataTypes.TEXT,
       allowNull: false,
     },
-    postedBy: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
+    // postedBy: {
+    //   type: DataTypes.STRING,
+    //   allowNull: true,
+    // },
     createdOn: {
       type: DataTypes.DATE,
       allowNull: false,

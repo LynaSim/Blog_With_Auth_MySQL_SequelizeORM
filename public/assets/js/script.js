@@ -110,7 +110,7 @@ function fetchPosts() {
         const userMap = post.user ? post.user.username : "Unknown User";
         console.log(`Username grabbed: ${userMap}`);
         div.innerHTML = `<h3>${post.title}</h3><p>${post.content
-          }</p><small>Lyna By: ${userMap} on ${new Date(
+          }</p><small> By: ${userMap} on ${new Date(
             post.createdOn
           ).toLocaleString()}</small> in category ${categoryMap}`;
         postsContainer.appendChild(div);
@@ -130,7 +130,7 @@ function createPost() {
   console.log("Creating post with title:", title);
   console.log("Content:", content);
   console.log("Category ID:", currentCategoryId);
-  console.log("Username:", currentUsername);
+  // console.log("Username:", currentUsername);
   console.log("User ID:", currentUserId);
 
   fetch("http://localhost:3001/api/posts", {
@@ -140,7 +140,7 @@ function createPost() {
       Authorization: `Bearer ${token}`,
     },
 
-    body: JSON.stringify({ userId: currentUserId, title, content, postedBy: currentUsername, categoryId: currentCategoryId }),
+    body: JSON.stringify({ userId: currentUserId, title, content, categoryId: currentCategoryId }), // deleted postedBy: currentUsername
   })
     .then((res) => res.json())
     .then(() => {

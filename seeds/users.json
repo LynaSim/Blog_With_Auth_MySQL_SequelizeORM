@@ -1,0 +1,65 @@
+[
+    {
+        "id": 1,
+        "username": "Jane Austen",
+        "email": "ja@email.com",
+        "password": "$2b$10$3aFIMgqiXFlzTuB6X2p5vObBQ5XioIe/2M.lR4xJb9NCHwR4df0Nm",
+        "createdOn": "2024-01-01T12:00:00Z"
+    },
+    {
+        "id": 2,
+        "username": "Mary Shelley",
+        "email": "ms@email.com",
+        "password": "$2b$10$3aFIMgqiXFlzTuB6X2p5vObBQ5XioIe/2M.lR4xJb9NCHwR4df0Nm",
+        "createdOn": "2024-01-01T12:00:00Z"
+    },
+    {
+        "id": 3,
+        "username": "Charlotte Brontë",
+        "email": "cb@email.com",
+        "password": "$2b$10$3aFIMgqiXFlzTuB6X2p5vObBQ5XioIe/2M.lR4xJb9NCHwR4df0Nm",
+        "createdOn": "2024-01-01T12:00:00Z"
+    },
+    {
+        "id": 4,
+        "username": "Oscar Wilde",
+        "email": "ow@email.com",
+        "password": "$2b$10$3aFIMgqiXFlzTuB6X2p5vObBQ5XioIe/2M.lR4xJb9NCHwR4df0Nm",
+        "createdOn": "2024-01-01T12:00:00Z"
+    },
+    {
+        "id": 5,
+        "username": "Lewis Carroll",
+        "email": "lc@email.com",
+        "password": "$2b$10$3aFIMgqiXFlzTuB6X2p5vObBQ5XioIe/2M.lR4xJb9NCHwR4df0Nm",
+        "createdOn": "2024-01-01T12:00:00Z"
+    },
+    {
+        "id": 6,
+        "username": "Arthur Conan Doyle",
+        "email": "acd@email.com",
+        "password": "$2b$10$3aFIMgqiXFlzTuB6X2p5vObBQ5XioIe/2M.lR4xJb9NCHwR4df0Nm",
+        "createdOn": "2024-01-01T12:00:00Z"
+    },
+    {
+        "id": 7,
+        "username": "H. G. Wells",
+        "email": "hw@email.com",
+        "password": "$2b$10$3aFIMgqiXFlzTuB6X2p5vObBQ5XioIe/2M.lR4xJb9NCHwR4df0Nm",
+        "createdOn": "2024-01-01T12:00:00Z"
+    },
+    {
+        "id": 8,
+        "username": "Jerome K. Jerome",
+        "email": "jkj@email.com",
+        "password": "$2b$10$3aFIMgqiXFlzTuB6X2p5vObBQ5XioIe/2M.lR4xJb9NCHwR4df0Nm",
+        "createdOn": "2024-01-01T12:00:00Z"
+    },
+      {
+        "id": 9,
+        "username": "William Morris",
+        "email": "wm@email.com",
+        "password": "$2b$10$3aFIMgqiXFlzTuB6X2p5vObBQ5XioIe/2M.lR4xJb9NCHwR4df0Nm",
+        "createdOn": "2024-01-01T12:00:00Z"
+    }
+]

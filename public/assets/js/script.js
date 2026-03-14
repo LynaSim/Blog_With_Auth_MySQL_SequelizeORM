@@ -9,12 +9,18 @@ function populateCategories() {
       categories.forEach(category => {
         const option = document.createElement("option");
         option.value = category.id;
-        option.textContent = category.category_name; 
+        option.textContent = category.categoryName; 
         categorySelect.appendChild(option);
       });
     })
     .catch(err => console.error("Error loading categories:", err));
 }
+
+function resetCategories() {
+  const categorySelect = document.getElementById("post-category");
+  categorySelect.innerHTML = '<option value="">Select a category</option>';
+}
+
 
 function register() {
   const username = document.getElementById("username").value;
@@ -85,6 +91,7 @@ function logout() {
     token = null;
     document.getElementById("auth-container").classList.remove("hidden");
     document.getElementById("app-container").classList.add("hidden");
+    resetCategories(); // Clear the dropdown options when logging out
   });
 }
 

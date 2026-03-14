@@ -107,9 +107,9 @@ function fetchPosts() {
       posts.forEach((post) => {
         const div = document.createElement("div");
         div.innerHTML = `<h3>${post.title}</h3><p>${post.content
-          }</p><small>By: ${post.postedBy} on ${new Date(
+          }</p><small>Lyna By: ${post.postedBy} on ${new Date(
             post.createdOn
-          ).toLocaleString()}</small>`;
+          ).toLocaleString()}</small> in category ${post.categoryId}`;
         postsContainer.appendChild(div);
       });
     });
@@ -119,11 +119,16 @@ function createPost() {
   const title = document.getElementById("post-title").value;
   const content = document.getElementById("post-content").value;
   // Get the selected category id from the dropdown
-  const categoryId = document.getElementById("post-category").value;
+  const currentCategoryId = document.getElementById("post-category").value;
   // Get the username from localStorage
-  const currentUsername = localStorage.getItem("username");
+  const currentUsername = localStorage.getItem("userData");
   // Get the user ID from localStorage
   const currentUserId = localStorage.getItem("userId");
+  console.log("Creating post with title:", title);
+  console.log("Content:", content);
+  console.log("Category ID:", currentCategoryId);
+  console.log("Username:", currentUsername);
+  console.log("User ID:", currentUserId);
 
   fetch("http://localhost:3001/api/posts", {
     method: "POST",
@@ -132,7 +137,7 @@ function createPost() {
       Authorization: `Bearer ${token}`,
     },
 
-    body: JSON.stringify({ title, content, postedBy: currentUsername, categoryId: categoryId, userId: currentUserId }),
+    body: JSON.stringify({ userId: currentUserId, title, content, postedBy: currentUsername }),
   })
     .then((res) => res.json())
     .then(() => {

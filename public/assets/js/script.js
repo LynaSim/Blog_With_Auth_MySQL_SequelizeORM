@@ -96,7 +96,7 @@ function logout() {
 }
 
 function fetchPosts() {
-  fetch("http://localhost:3001/api/posts/with-category", {
+  fetch("http://localhost:3001/api/posts/with-details", {
     method: "GET",
     headers: { Authorization: `Bearer ${token}` },
   })
@@ -107,8 +107,10 @@ function fetchPosts() {
       posts.forEach((post) => {
         const div = document.createElement("div");
         const categoryMap = post.category ? post.category.categoryName : "Uncategorized";
+        const userMap = post.user ? post.user.username : "Unknown User";
+        console.log(`Username grabbed: ${userMap}`);
         div.innerHTML = `<h3>${post.title}</h3><p>${post.content
-          }</p><small>Lyna By: ${post.postedBy} on ${new Date(
+          }</p><small>Lyna By: ${userMap} on ${new Date(
             post.createdOn
           ).toLocaleString()}</small> in category ${categoryMap}`;
         postsContainer.appendChild(div);

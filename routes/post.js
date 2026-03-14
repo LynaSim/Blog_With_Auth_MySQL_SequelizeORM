@@ -1,7 +1,7 @@
 // create a new router
 const router = require("express").Router();
 
-const { Post, Category } = require("../models/index");
+const { Post, Category, User } = require("../models/index");
 
 // Route to add a new post
 router.post("/", async (req, res) => {
@@ -27,13 +27,19 @@ router.get("/", async (req, res) => {
 });
 
 // Route to perform a join between Post and Category to get posts with category names
-router.get("/with-category", async (req, res) => {
+router.get("/with-details", async (req, res) => {
   try {
     const posts = await Post.findAll({
-      include: [{
+      include: [
+        {
         model: Category,
         attributes: ["categoryName"]
-      }]
+      },
+      {
+        model: User,
+        attributes: ["username"]
+      }
+    ]
     });
 
     res.json(posts);

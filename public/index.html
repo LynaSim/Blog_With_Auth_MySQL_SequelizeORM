@@ -27,15 +27,28 @@
         <h2>Welcome</h2>
         <button onclick="logout()">Logout</button>
         <hr>
-        <h2>Create a Post</h2>
-        <input type="text" id="post-title" placeholder="Title">
-        <textarea id="post-content" placeholder="Content"></textarea>
-        <!-- Category selector -->
-        <select id="post-category">
-            <option value="">Select a category</option>
-        </select>
-        <!-- End Category selector -->
-        <button onclick="createPost()">Submit Post</button>
+        <div id="create-post-general-container" class="">
+            <h2>Create a Post</h2>
+            <input type="text" id="post-title" placeholder="Title">
+            <textarea id="post-content" placeholder="Content"></textarea>
+            <!-- Category selector -->
+            <select id="post-category">
+                <option value="">Select a category</option>
+            </select>
+            <!-- End Category selector -->
+            <button onclick="createPost()">Submit Post</button>
+        </div>
+        <div id="create-post-user-container" class="hidden">
+            <h2>Create a Post</h2>
+            <input type="text" id="post-title" placeholder="Title">
+            <textarea id="post-content" placeholder="Content"></textarea>
+            <!-- Category selector -->
+            <select id="post-category">
+                <option value="">Select a category</option>
+            </select>
+            <!-- End Category selector -->
+            <button onclick="fetchUserPosts()">Submit Post</button>
+        </div>
         <hr>
         <h2>Posts</h2>
         <h3>Welcome click here to see and edit your posts</h3>
@@ -50,11 +63,9 @@
                 <option value="">Select a category</option>
             </select>
             <!-- End Edit Category selector -->
-            <button onclick="submitEdit()">Submit Edit</button>
+            <button data-id="" onclick="submitEdit()" id="submit-edit-btn">Submit Edit</button>
+        </div>
     </div>
-
-    
-
     <script src="./assets/js/script.js"></script>
 </body>
 

@@ -101,5 +101,31 @@ router.get("/:id", authMiddleware, async (req, res) => {
   }
 });
 
+// Route to update a post by ID
+router.put("/:id", authMiddleware, async (req, res) => {
+  try {
+    const { title, content, categoryId } = req.body;
+    
+    // 1. Perform the update
+    const [dataUpdated] = await Post.update(
+      { title, content, categoryId },
+      { where: { id: req.params.id } }
+    );
+
+    // 2. Check if the post actually exists (ignore if dataUpdated is 0 but post exists)
+    const updatedPost = await Post.findByPk(req.params.id);
+
+    if (!updatedPost) {
+      return res.status(404).json({ error: "Post not found" });
+    }
+
+    // 3. Return the actual updated post data
+    res.json(updatedPost);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Error updating post" });
+  }
+});
+
 // export the router
 module.exports = router;

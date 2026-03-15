@@ -192,8 +192,45 @@ function editPost(postId) {
       document.getElementById("edit-post-content").value = post.content;
       document.getElementById("edit-post-category").value = post.categoryId;
       document.getElementById("edit-post-container").classList.remove("hidden");
-      
+      // document.getElementById("create-post-general-container").classList.add("hidden");
+      // document.getElementById("create-post-user-container").classList.remove("hidden");
+
       const postsContainer = document.getElementById("posts");
       postsContainer.classList = "hidden";
+
+      // Stores post id in the submit button's data attribute for later retrieval when submitting the edit
+      const submitEditBtn = document.getElementById("submit-edit-btn");
+      submitEditBtn.setAttribute("data-id", postId);
+    });
+}
+
+function submitEdit() {
+  const postId = document.getElementById("submit-edit-btn").getAttribute("data-id");
+  const title = document.getElementById("edit-post-title").value;
+  const content = document.getElementById("edit-post-content").value;
+  const categoryId = document.getElementById("edit-post-category").value;
+console.log("Submitting edit for post ID:", postId);
+console.log("New title:", title);
+console.log("New content:", content);
+console.log("New category ID:", categoryId);
+  fetch(`http://localhost:3001/api/posts/${postId}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({ title, content, categoryId }),
+  })
+    .then((res) => {
+      if (!res.ok) {
+        throw new Error("Failed to update post");
+      }
+      return res.json();
+    })
+    .then((data) => {
+      alert("Post updated successfully");
+      document.getElementById("edit-post-container").classList.add("hidden");
+      document.getElementById("posts").classList.remove("hidden");
+      fetchUserPosts(); // Refresh the user's posts to show the updated content
     });
 }

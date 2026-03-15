@@ -106,13 +106,14 @@ function fetchPosts() {
       postsContainer.innerHTML = "";
       posts.forEach((post) => {
         const div = document.createElement("div");
+        div.classList.add("div-post");
         const categoryMap = post.category ? post.category.categoryName : "Uncategorized";
         const userMap = post.user ? post.user.username : "Unknown User";
         console.log(`Username grabbed: ${userMap}`);
-        div.innerHTML = `<h3>${post.title}</h3><p>${post.content
-          }</p><small> By: ${userMap} on ${new Date(
+        div.innerHTML = `<h3>${post.title}</h3><div>${post.content
+          }</div><div class="post-meta"><small> By: ${userMap} on ${new Date(
             post.createdOn
-          ).toLocaleString()}</small> in category ${categoryMap}`;
+          ).toLocaleString()}</small> in category ${categoryMap}</div>`;
         postsContainer.appendChild(div);
       });
     });
@@ -124,7 +125,7 @@ function createPost() {
   // Get the selected category id from the dropdown
   const currentCategoryId = document.getElementById("post-category").value;
   // Get the username from localStorage
-  const currentUsername = localStorage.getItem("userData");
+  // const currentUsername = localStorage.getItem("userData");
   // Get the user ID from localStorage
   const currentUserId = localStorage.getItem("userId");
   console.log("Creating post with title:", title);
@@ -147,4 +148,38 @@ function createPost() {
       alert("Post created successfully");
       fetchPosts();
     });
+}
+
+function fetchUserPosts() {
+  fetch(`http://localhost:3001/api/posts/user/${localStorage.getItem("userId")}`, {
+    method: "GET",
+    headers: { Authorization: `Bearer ${token}` },
+  })
+    .then((res) => res.json())
+    .then((posts) => {
+      const postsContainer = document.getElementById("posts");
+      postsContainer.innerHTML = "";
+      posts.forEach((post) => {
+        const div = document.createElement("div");
+        div.classList.add("div-post");
+        const categoryMap = post.category ? post.category.categoryName : "Uncategorized";
+        const userMap = post.user ? post.user.username : "Unknown User";
+        console.log(`Username grabbed: ${userMap}`);
+        div.innerHTML = 
+        `<h3>${post.title}</h3>
+        <div>${post.content}</div>
+        <div class="post-meta"><small> By: ${userMap} on ${new Date(
+            post.createdOn
+          ).toLocaleString()}</small> in category ${categoryMap}</div>
+          <button onclick="editPost(${post.id})">Edit</button>
+          <button onclick="deletePost(${post.id})">Delete</button>`;
+        postsContainer.appendChild(div);
+      });
+    });
+}
+
+function editPost(postId) {
+  
+  const postsContainer = document.getElementById("posts");
+  postsContainer.innerHTML = "";
 }

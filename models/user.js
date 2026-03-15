@@ -23,22 +23,22 @@ User.init(
     },
     email: {
       type: DataTypes.STRING,
-      allowNull: false, // temporary change 
+      allowNull: false,
       unique: true,
       validate: {
-        isEmail: true, // temporary change
+        isEmail: true,
       },
     },
     password: {
       type: DataTypes.STRING,
-      allowNull: false, // temporary change
+      allowNull: false,
       validate: {
         len: [8],
       },
     },
     createdOn: {
       type: DataTypes.DATE,
-      allowNull: false, // temporary change
+      allowNull: false,
       defaultValue: Sequelize.NOW,
     },
   },

@@ -1,5 +1,7 @@
 // create a new router
 const router = require("express").Router();
+const { signToken, authMiddleware } = require("../utils/auth");
+
 
 const { Post, Category, User } = require("../models/index");
 
@@ -43,6 +45,31 @@ router.get("/with-details", async (req, res) => {
     });
 
     res.json(posts);
+  } catch (error) {
+    res.status(500).json({ error: "Error retrieving posts with categories", error });
+  }
+});
+
+// Route to filter posts by a specific user
+router.get("/user/:userId", authMiddleware, async (req, res) => {
+  try {
+    const userPosts = await Post.findAll({
+      where: {
+        userId: req.params.userId
+      },
+      include: [
+        {
+        model: Category,
+        attributes: ["categoryName"]
+      },
+      {
+        model: User,
+        attributes: ["username"]
+      }
+    ]
+    });
+
+    res.json(userPosts);
   } catch (error) {
     res.status(500).json({ error: "Error retrieving posts with categories", error });
   }

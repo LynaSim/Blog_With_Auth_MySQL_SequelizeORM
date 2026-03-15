@@ -38,9 +38,22 @@
         <button onclick="createPost()">Submit Post</button>
         <hr>
         <h2>Posts</h2>
-        <button onclick="fetchPosts()">Load Posts</button>
-        <div id="posts"></div>
+        <h3>Welcome click here to see and edit your posts</h3>
+        <button onclick="fetchUserPosts()">Load Your Posts</button>
+        <div id="posts" class=""></div>
+        <div id="edit-post-container" class="hidden">
+            <h2>Edit Post</h2>
+            <input type="text" id="edit-post-title" placeholder="Title">
+            <textarea id="edit-post-content" placeholder="Content"></textarea>
+            <!-- Edit Category selector -->
+            <select id="edit-post-category">
+                <option value="">Select a category</option>
+            </select>
+            <!-- End Edit Category selector -->
+            <button onclick="submitEdit()">Submit Edit</button>
     </div>
+
+    
 
     <script src="./assets/js/script.js"></script>
 </body>

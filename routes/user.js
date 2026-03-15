@@ -13,7 +13,7 @@ router.get("/me", authMiddleware, async (req, res) => {
   }
 });
 
-// Create a new User record
+// Create a new User record = Register
 router.post("/", async (req, res) => {
   try {
     const userData = await User.create(req.body);

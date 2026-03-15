@@ -234,3 +234,22 @@ console.log("New category ID:", categoryId);
       fetchUserPosts(); // Refresh the user's posts to show the updated content
     });
 }
+
+function deletePost(postId) {
+  if (confirm("Are you sure you want to delete this post?")) {
+    fetch(`http://localhost:3001/api/posts/${postId}`, {
+      method: "DELETE",
+      headers: { Authorization: `Bearer ${token}` },
+    })
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error("Failed to delete post");
+        }
+        return res.json();
+      })
+      .then((data) => {
+        alert("Post deleted successfully");
+        fetchUserPosts(); // Refresh the user's posts to show the updated content
+      });
+  }
+}

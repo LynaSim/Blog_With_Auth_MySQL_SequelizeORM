@@ -127,5 +127,16 @@ router.put("/:id", authMiddleware, async (req, res) => {
   }
 });
 
+// Route to delete a post by ID
+router.delete("/:id", authMiddleware, async (req, res) => {
+  try {
+    const deleted =await Post.destroy({ where: { id: req.params.id } });
+    res.json(deleted);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Error deleting post" });
+  }
+});
+
 // export the router
 module.exports = router;

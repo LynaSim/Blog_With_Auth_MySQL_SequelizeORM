@@ -75,5 +75,31 @@ router.get("/user/:userId", authMiddleware, async (req, res) => {
   }
 });
 
+// Route to fetch a single post by ID with category
+router.get("/:id", authMiddleware, async (req, res) => {
+  try {
+    const post = await Post.findByPk(req.params.id, {
+      include: [
+        {
+          model: Category,
+          attributes: ["categoryName"]
+        },
+        {
+          model: User,
+          attributes: ["username"]
+        }
+      ]
+    });
+
+    if (!post) {
+      return res.status(404).json({ error: "Post not found" });
+    }
+
+    res.json(post);
+  } catch (error) {
+    res.status(500).json({ error: "Error retrieving post", error });
+  }
+});
+
 // export the router
 module.exports = router;

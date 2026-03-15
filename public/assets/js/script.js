@@ -2,6 +2,7 @@ let token = localStorage.getItem("authToken");
 
 function populateCategories() {
   const categorySelect = document.getElementById("post-category");
+  const editPostCategorySelect = document.getElementById("edit-post-category");
 
   fetch("http://localhost:3001/api/categories")
     .then(res => res.json())
@@ -11,6 +12,7 @@ function populateCategories() {
         option.value = category.id;
         option.textContent = category.categoryName;
         categorySelect.appendChild(option);
+        editPostCategorySelect.appendChild(option.cloneNode(true)); // Clone the option for the edit dropdown
       });
     })
     .catch(err => console.error("Error loading categories:", err));
@@ -20,7 +22,6 @@ function resetCategories() {
   const categorySelect = document.getElementById("post-category");
   categorySelect.innerHTML = '<option value="">Select a category</option>';
 }
-
 
 function register() {
   const username = document.getElementById("username").value;
@@ -151,7 +152,8 @@ function createPost() {
 }
 
 function fetchUserPosts() {
-  fetch(`http://localhost:3001/api/posts/user/${localStorage.getItem("userId")}`, {
+  fetch(`http://localhost:3001/api/posts/user/${localStorage.getItem("userId")}`, 
+  {
     method: "GET",
     headers: { Authorization: `Bearer ${token}` },
   })
@@ -179,7 +181,19 @@ function fetchUserPosts() {
 }
 
 function editPost(postId) {
-  
-  const postsContainer = document.getElementById("posts");
-  postsContainer.innerHTML = "";
+  fetch(`http://localhost:3001/api/posts/${postId}`, 
+    {
+      method: "GET",
+      headers: { Authorization: `Bearer ${token}` },
+    })
+    .then((res) => res.json())
+    .then((post) => {
+      document.getElementById("edit-post-title").value = post.title;
+      document.getElementById("edit-post-content").value = post.content;
+      document.getElementById("edit-post-category").value = post.categoryId;
+      document.getElementById("edit-post-container").classList.remove("hidden");
+      
+      const postsContainer = document.getElementById("posts");
+      postsContainer.classList = "hidden";
+    });
 }

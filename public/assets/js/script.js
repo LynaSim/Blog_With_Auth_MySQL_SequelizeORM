@@ -5,7 +5,7 @@ function populateCategories() {
   const editPostCategorySelect = document.getElementById("edit-post-category");
   const filterCategorySelect = document.getElementById("filter-category-select");
 
-  fetch("http://localhost:3001/api/categories")
+  fetch("/api/categories")
     .then(res => res.json())
     .then(categories => {
       categories.forEach(category => {
@@ -30,7 +30,7 @@ function register() {
   const username = document.getElementById("username").value;
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
-  fetch("http://localhost:3001/api/users", {
+  fetch("/api/users", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ username, email, password }),
@@ -51,7 +51,7 @@ function register() {
 function login() {
   const email = document.getElementById("login-email").value;
   const password = document.getElementById("login-password").value;
-  fetch("http://localhost:3001/api/users/login", {
+  fetch("/api/users/login", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ email, password }),
@@ -89,7 +89,7 @@ function login() {
 }
 
 function logout() {
-  fetch("http://localhost:3001/api/users/logout", {
+  fetch("/api/users/logout", {
     method: "POST",
     headers: { Authorization: `Bearer ${token}` },
   }).then(() => {
@@ -106,7 +106,7 @@ function logout() {
 }
 
 function fetchPosts() {
-  fetch("http://localhost:3001/api/posts/with-details", {
+  fetch("/api/posts/with-details", {
     method: "GET",
     headers: { Authorization: `Bearer ${token}` },
   })
@@ -136,7 +136,7 @@ function createPost() {
   // Get the user ID from localStorage
   const currentUserId = localStorage.getItem("userId");
   
-  fetch("http://localhost:3001/api/posts", {
+  fetch("/api/posts", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -153,7 +153,7 @@ function createPost() {
 }
 
 function fetchUserPosts() {
-  fetch(`http://localhost:3001/api/posts/user/${localStorage.getItem("userId")}`,
+  fetch(`/api/posts/user/${localStorage.getItem("userId")}`,
     {
       method: "GET",
       headers: { Authorization: `Bearer ${token}` },
@@ -182,7 +182,7 @@ function fetchUserPosts() {
 }
 
 function editPost(postId) {
-  fetch(`http://localhost:3001/api/posts/${postId}`,
+  fetch(`/api/posts/${postId}`,
     {
       method: "GET",
       headers: { Authorization: `Bearer ${token}` },
@@ -209,7 +209,7 @@ function submitEdit() {
   const content = document.getElementById("edit-post-content").value;
   const categoryId = document.getElementById("edit-post-category").value;
 
-  fetch(`http://localhost:3001/api/posts/${postId}`, {
+  fetch(`/api/posts/${postId}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
@@ -233,7 +233,7 @@ function submitEdit() {
 
 function deletePost(postId) {
   if (confirm("Are you sure you want to delete this post?")) {
-    fetch(`http://localhost:3001/api/posts/${postId}`, {
+    fetch(`/api/posts/${postId}`, {
       method: "DELETE",
       headers: { Authorization: `Bearer ${token}` },
     })
@@ -255,7 +255,7 @@ function fetchPostsByCat() {
   const categorySelect = document.getElementById("filter-category-select");
   const categoryId = categorySelect.value;
 
-  fetch(`http://localhost:3001/api/posts/category/${categoryId}`,
+  fetch(`/api/posts/category/${categoryId}`,
     {
       method: "GET",
       headers: { Authorization: `Bearer ${token}` },

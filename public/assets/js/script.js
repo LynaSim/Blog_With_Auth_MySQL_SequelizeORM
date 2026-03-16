@@ -100,6 +100,7 @@ function logout() {
     document.getElementById("app-container").classList.add("hidden");
     document.getElementById("welcome-section").classList.remove("hidden");
     document.getElementById("display-posts").classList.add("hidden");
+    document.getElementById("edit-post-container").classList.add("hidden");
 
     resetCategories(); // Clear the dropdown options so they don't duplicate
   });
@@ -135,7 +136,7 @@ function createPost() {
   const currentCategoryId = document.getElementById("post-category").value;
   // Get the user ID from localStorage
   const currentUserId = localStorage.getItem("userId");
-  
+
   fetch("/api/posts", {
     method: "POST",
     headers: {

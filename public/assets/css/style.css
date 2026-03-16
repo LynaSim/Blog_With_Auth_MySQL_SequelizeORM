@@ -80,6 +80,7 @@ h1 {
 }
 
 h2 {
+    text-align: center;
     font-size: 1.5em;
     font-family: Fraunces, Georgia, Cambria, "Times New Roman", Times, serif;
     margin-bottom: 20px;
@@ -101,14 +102,21 @@ button {
 }
 
 input[type="text"],
-select,
-textarea {
+select {
     width: 100%;
     border: 1px solid #ccc;
     border-radius: 10px;
     box-sizing: border-box;
     margin-top: 6px;
     margin-bottom: 10px;
+}
+
+textarea {
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
 }
 
 input[type="submit"] {

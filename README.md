@@ -1,6 +1,6 @@
 # A Creative Writing Blog
 
-
+![Blog Homepage Preview](./github-blog-screenshot.jpg)
 
 A full-stack monolithic application blog with authentication. Users can view, post, edit, categorise, and filter stories. This project showcases the use of:
 
@@ -88,5 +88,6 @@ The app will be running at http://localhost:3001.
 
 ## Credentials
 
-medium.com inspired the colour theme and font combination.
+**medium.com** inspired the colour theme and font combination.
+
 Fountain Pen favicon from <a target="_blank" href="https://icons8.com/icon/B6WOInNacWNm/fountain-pen">Fountain Pen</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>

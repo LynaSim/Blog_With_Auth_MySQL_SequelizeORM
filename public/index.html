@@ -4,71 +4,104 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Creative Writing Blog</title>
+    <title>Sequel-ize Creative Writing Blog</title>
     <link rel="icon" type="image/x-icon" href="./assets/img/favicon.ico">
     <link rel="stylesheet" href="./assets/css/reset.css">
     <link rel="stylesheet" href="./assets/css/style.css">
-
+    <!-- Google Font "Fraunces" -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&display=swap">
 </head>
 
 <body>
-    <div class="container" id="auth-container">
-        <h2>Register</h2>
-        <input type="text" id="username" placeholder="Username">
-        <input type="email" id="email" placeholder="Email">
-        <input type="password" id="password" placeholder="Password">
-        <button onclick="register()">Register</button>
-        <hr>
-        <h2>Login</h2>
-        <input type="email" id="login-email" placeholder="Email">
-        <input type="password" id="login-password" placeholder="Password">
-        <button onclick="login()">Login</button>
-    </div>
+    <header>
+        <h1 id="header-h1">Sequel-ize Stories</h1>
+    </header>
+    <main class="container">
+        <div class="col-1">
+            <section id="welcome-section">
+                <!-- <h1>Welcome to<br>Sequel-ize
+                        Stories,</span></h1>
+                <br> -->
+                <!-- <h2>A creative writing blog built at the intersection of narrative and nodes.</h2> -->
+                <h1>A creative writing blog built at the intersection of narrative and nodes.</h1>
 
-    <div class="container hidden" id="app-container">
-        <h2>Welcome</h2>
-        <button onclick="logout()">Logout</button>
-        <hr>
-        <div id="create-post-general-container" class="">
-            <h2>Create a Post</h2>
-            <input type="text" id="post-title" placeholder="Title">
-            <textarea id="post-content" placeholder="Content"></textarea>
-            <!-- Category selector -->
-            <select id="post-category">
-                <option value="">Select a category</option>
-            </select>
-            <!-- End Category selector -->
-            <button onclick="createPost()">Submit Post</button>
+                <br>
+                <p>This platform serves as a space for writers to categorise and share their tales.</p>
+                <p>Beneath the surface, it is a <strong>full-stack</strong> exploration of modern web development—featuring a
+                    <strong>Node.js</strong> and <strong>Express backend</strong>, a
+                    <strong>MySQL database</strong>, and structured data management via the <strong>Sequelize
+                        ORM</strong>.
+                </p>
+                <br>
+                <p class="italic text-align-right">What will your sequel be?</p>
+            </section>
+            <section id="display-posts" class="hidden">
+                <section id="posts-container"></section>
+            </section>
+            <section>
+                <div id="edit-post-container" class="hidden">
+                    <h2>Edit Post</h2>
+                    <input type="text" id="edit-post-title" placeholder="Title">
+                    <textarea id="edit-post-content" placeholder="Content"></textarea>
+                    <!-- Edit Category selector -->
+                    <select id="edit-post-category">
+                        <option value="">Select a category</option>
+                    </select>
+                    <!-- End Edit Category selector -->
+                    <button data-id="" onclick="submitEdit()" id="submit-edit-btn">Submit Edit</button>
+                </div>
+            </section>
+
         </div>
-        <div id="create-post-user-container" class="hidden">
-            <h2>Create a Post</h2>
-            <input type="text" id="post-title" placeholder="Title">
-            <textarea id="post-content" placeholder="Content"></textarea>
-            <!-- Category selector -->
-            <select id="post-category">
-                <option value="">Select a category</option>
-            </select>
-            <!-- End Category selector -->
-            <button onclick="fetchUserPosts()">Submit Post</button>
+        <div class="col-2">
+            <section class="container bef-login" id="auth-container">
+                <h2>Please register or login to start reading.</h2>
+                <hr>
+                <div>
+                    <h2>Register</h2>
+                    <input type="text" id="username" placeholder="Username">
+                    <input type="email" id="email" placeholder="Email">
+                    <input type="password" id="password" placeholder="Password">
+                    <button onclick="register()">Register</button>
+                    <hr>
+                    <h2>Login</h2>
+                    <input type="email" id="login-email" placeholder="Email">
+                    <input type="password" id="login-password" placeholder="Password">
+                    <button onclick="login()">Login</button>
+                </div>
+            </section>
+            <section class="aft-login hidden" id="app-container">
+                <button onclick="logout()">Logout</button>
+                <hr>
+                <h2>Manage Your Posts</h2>
+                <button onclick="fetchUserPosts()">Go to your Posts</button>
+                <hr>
+                <h2>Browse By Category</h2>
+                <select id="filter-category-select">
+                    <option value="">Select a Genre</option>
+                </select>
+                <button onclick="fetchPostsByCat()">Go</button>
+                <hr>
+                <div id="create-post-general-container" class="">
+                    <h2>Create a Post</h2>
+                    <input type="text" id="post-title" placeholder="Title">
+                    <textarea id="post-content" placeholder="Content" rows="20"></textarea>
+                    <!-- Category selector -->
+                    <select id="post-category">
+                        <option value="">Select a category</option>
+                    </select>
+                    <!-- End Category selector -->
+                    <button onclick="createPost()">Submit Post</button>
+                </div>
+            </section>
         </div>
-        <hr>
-        <h2>Posts</h2>
-        <h3>Welcome click here to see and edit your posts</h3>
-        <button onclick="fetchUserPosts()">Load Your Posts</button>
-        <!-- Posts will be displayed here -->
-        <div id="posts" class=""></div>
-        <div id="edit-post-container" class="hidden">
-            <h2>Edit Post</h2>
-            <input type="text" id="edit-post-title" placeholder="Title">
-            <textarea id="edit-post-content" placeholder="Content"></textarea>
-            <!-- Edit Category selector -->
-            <select id="edit-post-category">
-                <option value="">Select a category</option>
-            </select>
-            <!-- End Edit Category selector -->
-            <button data-id="" onclick="submitEdit()" id="submit-edit-btn">Submit Edit</button>
-        </div>
-    </div>
+    </main>
+
+    <footer>
+        <p class="text-align-right"> &copy; 2026 Sequel-ize Creative Writing Blog. All rights reserved.</p>
+    </footer>
     <script src="./assets/js/script.js"></script>
 </body>
 

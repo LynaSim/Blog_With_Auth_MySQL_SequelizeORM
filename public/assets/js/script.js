@@ -72,6 +72,9 @@ function login() {
         // Hide the auth container and show the app container as we're now logged in
         document.getElementById("auth-container").classList.add("hidden");
         document.getElementById("app-container").classList.remove("hidden");
+        document.getElementById("welcome-section").classList.add("hidden");
+        document.getElementById("display-posts").classList.remove("hidden");
+
         populateCategories(); // Load the dropdown options
       } else {
         alert("data.message: " + data.message);
@@ -92,6 +95,9 @@ function logout() {
     token = null;
     document.getElementById("auth-container").classList.remove("hidden");
     document.getElementById("app-container").classList.add("hidden");
+    document.getElementById("welcome-section").classList.remove("hidden");
+    document.getElementById("display-posts").classList.add("hidden");
+
     resetCategories(); // Clear the dropdown options when logging out
   });
 }
@@ -103,8 +109,8 @@ function fetchPosts() {
   })
     .then((res) => res.json())
     .then((posts) => {
-      const postsContainer = document.getElementById("posts");
-      postsContainer.innerHTML = "";
+      const postsContainer = document.getElementById("posts-container");
+      postsContainer.innerHTML = "<h1>All Posts</h1>";
       posts.forEach((post) => {
         const div = document.createElement("div");
         div.classList.add("div-post");
@@ -152,23 +158,24 @@ function createPost() {
 }
 
 function fetchUserPosts() {
-  fetch(`http://localhost:3001/api/posts/user/${localStorage.getItem("userId")}`, 
-  {
-    method: "GET",
-    headers: { Authorization: `Bearer ${token}` },
-  })
+  fetch(`http://localhost:3001/api/posts/user/${localStorage.getItem("userId")}`,
+    {
+      method: "GET",
+      headers: { Authorization: `Bearer ${token}` },
+    })
     .then((res) => res.json())
     .then((posts) => {
-      const postsContainer = document.getElementById("posts");
-      postsContainer.innerHTML = "";
+      document.getElementById("display-posts").classList.remove("hidden");
+      const postsContainer = document.getElementById("posts-container");
+      postsContainer.innerHTML = "<h1>Manage Your Posts</h1>";
       posts.forEach((post) => {
         const div = document.createElement("div");
         div.classList.add("div-post");
         const categoryMap = post.category ? post.category.categoryName : "Uncategorized";
         const userMap = post.user ? post.user.username : "Unknown User";
         console.log(`Username grabbed: ${userMap}`);
-        div.innerHTML = 
-        `<h3>${post.title}</h3>
+        div.innerHTML =
+          `<h3>${post.title}</h3>
         <div>${post.content}</div>
         <div class="post-meta"><small> By: ${userMap} on ${new Date(
             post.createdOn
@@ -181,7 +188,7 @@ function fetchUserPosts() {
 }
 
 function editPost(postId) {
-  fetch(`http://localhost:3001/api/posts/${postId}`, 
+  fetch(`http://localhost:3001/api/posts/${postId}`,
     {
       method: "GET",
       headers: { Authorization: `Bearer ${token}` },
@@ -192,10 +199,9 @@ function editPost(postId) {
       document.getElementById("edit-post-content").value = post.content;
       document.getElementById("edit-post-category").value = post.categoryId;
       document.getElementById("edit-post-container").classList.remove("hidden");
-      // document.getElementById("create-post-general-container").classList.add("hidden");
-      // document.getElementById("create-post-user-container").classList.remove("hidden");
+      // document.getElementById("posts-container").classList.add("hidden");
 
-      const postsContainer = document.getElementById("posts");
+      const postsContainer = document.getElementById("display-posts");
       postsContainer.classList = "hidden";
 
       // Stores post id in the submit button's data attribute for later retrieval when submitting the edit
@@ -209,10 +215,10 @@ function submitEdit() {
   const title = document.getElementById("edit-post-title").value;
   const content = document.getElementById("edit-post-content").value;
   const categoryId = document.getElementById("edit-post-category").value;
-console.log("Submitting edit for post ID:", postId);
-console.log("New title:", title);
-console.log("New content:", content);
-console.log("New category ID:", categoryId);
+  console.log("Submitting edit for post ID:", postId);
+  console.log("New title:", title);
+  console.log("New content:", content);
+  console.log("New category ID:", categoryId);
   fetch(`http://localhost:3001/api/posts/${postId}`, {
     method: "PUT",
     headers: {
@@ -230,7 +236,7 @@ console.log("New category ID:", categoryId);
     .then((data) => {
       alert("Post updated successfully");
       document.getElementById("edit-post-container").classList.add("hidden");
-      document.getElementById("posts").classList.remove("hidden");
+      document.getElementById("display-posts").classList.remove("hidden");
       fetchUserPosts(); // Refresh the user's posts to show the updated content
     });
 }

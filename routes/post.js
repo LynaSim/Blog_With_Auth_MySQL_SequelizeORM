@@ -138,5 +138,32 @@ router.delete("/:id", authMiddleware, async (req, res) => {
   }
 });
 
+// Route to filter posts by a category
+// http://localhost:3001/api/posts/category/${categoryId}
+router.get("/category/:categoryId", authMiddleware, async (req, res) => {
+  try {
+    const userPosts = await Post.findAll({
+      where: {
+        categoryId: req.params.categoryId
+      },
+      include: [
+        {
+        model: Category,
+        attributes: ["categoryName"]
+      },
+      {
+        model: User,
+        attributes: ["username"]
+      }
+    ]
+    });
+
+    res.json(userPosts);
+  } catch (error) {
+    res.status(500).json({ error: "Error retrieving posts with categories", error });
+  }
+});
+
+
 // export the router
 module.exports = router;

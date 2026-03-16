@@ -3,6 +3,7 @@ let token = localStorage.getItem("authToken");
 function populateCategories() {
   const categorySelect = document.getElementById("post-category");
   const editPostCategorySelect = document.getElementById("edit-post-category");
+  const filterCategorySelect = document.getElementById("filter-category-select");
 
   fetch("http://localhost:3001/api/categories")
     .then(res => res.json())
@@ -13,7 +14,9 @@ function populateCategories() {
         option.textContent = category.categoryName;
         categorySelect.appendChild(option);
         editPostCategorySelect.appendChild(option.cloneNode(true)); // Clone the option for the edit dropdown
+        filterCategorySelect.appendChild(option.cloneNode(true));
       });
+      
     })
     .catch(err => console.error("Error loading categories:", err));
 }
@@ -258,4 +261,37 @@ function deletePost(postId) {
         fetchUserPosts(); // Refresh the user's posts to show the updated content
       });
   }
+}
+
+function fetchPostsByCat() {
+  const categorySelect = document.getElementById("filter-category-select");
+  const categoryId = categorySelect.value;
+  const categoryName = categorySelect.options[categorySelect.selectedIndex].text;
+
+  fetch(`http://localhost:3001/api/categories/${categoryId}`,
+    {
+      method: "GET",
+      headers: { Authorization: `Bearer ${token}` },
+    })
+    .then((res) => res.json())
+    .then((data) => {
+      document.getElementById("display-posts").classList.remove("hidden");
+      const postsContainer = document.getElementById("posts-container");
+      postsContainer.innerHTML = `<h1>Genre ${categoryName}</h1>`;
+      data.posts.forEach((post) => {
+        const div = document.createElement("div");
+        div.classList.add("div-post");
+        const categoryMap = post.category ? post.category.categoryName : "Uncategorized";
+        const userMap = post.user ? post.user.username : "Unknown User";
+        console.log(`Username grabbed: ${post.username}`);
+        div.innerHTML =
+          `<h3>${post.title}</h3>
+        <div>${post.content}</div>
+        <div class="post-meta"><small> By: ${userMap} on ${new Date(
+            post.createdOn
+          ).toLocaleString()}</small> in category ${categoryMap}</div>
+          `;
+        postsContainer.appendChild(div);
+      });
+    });
 }

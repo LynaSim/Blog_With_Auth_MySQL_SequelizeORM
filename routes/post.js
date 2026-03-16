@@ -21,7 +21,7 @@ router.post("/", async (req, res) => {
 router.get("/", async (req, res) => {
   try {
     const posts = await Post.findAll();
-
+  
     res.json(posts);
   } catch (error) {
     res.status(500).json({ error: "Error retrieving posts", error });
@@ -112,7 +112,7 @@ router.put("/:id", authMiddleware, async (req, res) => {
       { where: { id: req.params.id } }
     );
 
-    // 2. Check if the post actually exists (ignore if dataUpdated is 0 but post exists)
+    // 2. Check if the post actually exists
     const updatedPost = await Post.findByPk(req.params.id);
 
     if (!updatedPost) {

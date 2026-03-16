@@ -86,7 +86,7 @@ The app will be running at http://localhost:3001.
 * **/seeds:** Scripts to populate the database with initial samples.
 
 
-## Credentials
+## Credits
 
 **medium.com** inspired the colour theme and font combination.
 

@@ -21,10 +21,6 @@ Post.init(
       type: DataTypes.TEXT,
       allowNull: false,
     },
-    // postedBy: {
-    //   type: DataTypes.STRING,
-    //   allowNull: true,
-    // },
     createdOn: {
       type: DataTypes.DATE,
       allowNull: false,

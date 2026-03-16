@@ -13,7 +13,7 @@ function populateCategories() {
         option.value = category.id;
         option.textContent = category.categoryName;
         categorySelect.appendChild(option);
-        editPostCategorySelect.appendChild(option.cloneNode(true)); // Clone the option for the edit dropdown
+        editPostCategorySelect.appendChild(option.cloneNode(true)); // Clone because cannot be created multiple times
         filterCategorySelect.appendChild(option.cloneNode(true));
       });
 
@@ -101,7 +101,7 @@ function logout() {
     document.getElementById("welcome-section").classList.remove("hidden");
     document.getElementById("display-posts").classList.add("hidden");
 
-    resetCategories(); // Clear the dropdown options when logging out
+    resetCategories(); // Clear the dropdown options so they don't duplicate
   });
 }
 
@@ -119,7 +119,6 @@ function fetchPosts() {
         div.classList.add("div-post");
         const categoryMap = post.category ? post.category.categoryName : "Uncategorized";
         const userMap = post.user ? post.user.username : "Unknown User";
-        console.log(`Username grabbed: ${userMap}`);
         div.innerHTML = `<h3>${post.title}</h3><div>${post.content
           }</div><div class="post-meta"><small> By: ${userMap} on ${new Date(
             post.createdOn
@@ -134,16 +133,9 @@ function createPost() {
   const content = document.getElementById("post-content").value;
   // Get the selected category id from the dropdown
   const currentCategoryId = document.getElementById("post-category").value;
-  // Get the username from localStorage
-  // const currentUsername = localStorage.getItem("userData");
   // Get the user ID from localStorage
   const currentUserId = localStorage.getItem("userId");
-  console.log("Creating post with title:", title);
-  console.log("Content:", content);
-  console.log("Category ID:", currentCategoryId);
-  // console.log("Username:", currentUsername);
-  console.log("User ID:", currentUserId);
-
+  
   fetch("http://localhost:3001/api/posts", {
     method: "POST",
     headers: {
@@ -176,7 +168,6 @@ function fetchUserPosts() {
         div.classList.add("div-post");
         const categoryMap = post.category ? post.category.categoryName : "Uncategorized";
         const userMap = post.user ? post.user.username : "Unknown User";
-        console.log(`Username grabbed: ${userMap}`);
         div.innerHTML =
           `<h3>${post.title}</h3>
         <div>${post.content}</div>
@@ -202,7 +193,6 @@ function editPost(postId) {
       document.getElementById("edit-post-content").value = post.content;
       document.getElementById("edit-post-category").value = post.categoryId;
       document.getElementById("edit-post-container").classList.remove("hidden");
-      // document.getElementById("posts-container").classList.add("hidden");
 
       const postsContainer = document.getElementById("display-posts");
       postsContainer.classList = "hidden";
@@ -218,10 +208,7 @@ function submitEdit() {
   const title = document.getElementById("edit-post-title").value;
   const content = document.getElementById("edit-post-content").value;
   const categoryId = document.getElementById("edit-post-category").value;
-  console.log("Submitting edit for post ID:", postId);
-  console.log("New title:", title);
-  console.log("New content:", content);
-  console.log("New category ID:", categoryId);
+
   fetch(`http://localhost:3001/api/posts/${postId}`, {
     method: "PUT",
     headers: {
@@ -240,7 +227,7 @@ function submitEdit() {
       alert("Post updated successfully");
       document.getElementById("edit-post-container").classList.add("hidden");
       document.getElementById("display-posts").classList.remove("hidden");
-      fetchUserPosts(); // Refresh the user's posts to show the updated content
+      fetchUserPosts();
     });
 }
 
@@ -258,7 +245,7 @@ function deletePost(postId) {
       })
       .then((data) => {
         alert("Post deleted successfully");
-        fetchUserPosts(); // Refresh the user's posts to show the updated content
+        fetchUserPosts();
       });
   }
 }
@@ -267,7 +254,6 @@ function deletePost(postId) {
 function fetchPostsByCat() {
   const categorySelect = document.getElementById("filter-category-select");
   const categoryId = categorySelect.value;
-  // const categoryName = categorySelect.options[categorySelect.selectedIndex].text;
 
   fetch(`http://localhost:3001/api/posts/category/${categoryId}`,
     {
@@ -284,7 +270,6 @@ function fetchPostsByCat() {
         div.classList.add("div-post");
         const categoryMap = post.category ? post.category.categoryName : "Uncategorized";
         const userMap = post.user ? post.user.username : "Unknown User";
-        console.log(`Username grabbed: ${userMap}`);
         div.innerHTML =
           `<h3>${post.title}</h3>
         <div>${post.content}</div>

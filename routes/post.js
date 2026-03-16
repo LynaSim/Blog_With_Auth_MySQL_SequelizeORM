@@ -17,21 +17,22 @@ router.post("/", async (req, res) => {
   }
 });
 
-// Route to get all posts
-router.get("/", async (req, res) => {
-  try {
-    const posts = await Post.findAll();
+// // Route to get all posts
+// router.get("/", async (req, res) => {
+//   try {
+//     const posts = await Post.findAll();
   
-    res.json(posts);
-  } catch (error) {
-    res.status(500).json({ error: "Error retrieving posts", error });
-  }
-});
+//     res.json(posts);
+//   } catch (error) {
+//     res.status(500).json({ error: "Error retrieving posts", error });
+//   }
+// });
 
 // Route to perform a join between Post, Category, and User to get posts with category name and username
 router.get("/with-details", async (req, res) => {
   try {
     const posts = await Post.findAll({
+      order: [['createdOn', 'DESC']],
       include: [
         {
         model: Category,
@@ -57,6 +58,7 @@ router.get("/user/:userId", authMiddleware, async (req, res) => {
       where: {
         userId: req.params.userId
       },
+      order: [['createdOn', 'DESC']],
       include: [
         {
         model: Category,
@@ -146,6 +148,7 @@ router.get("/category/:categoryId", authMiddleware, async (req, res) => {
       where: {
         categoryId: req.params.categoryId
       },
+      order: [['createdOn', 'DESC']],
       include: [
         {
         model: Category,

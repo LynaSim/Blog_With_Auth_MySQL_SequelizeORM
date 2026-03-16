@@ -8,11 +8,10 @@
     <link rel="icon" type="image/x-icon" href="./assets/img/favicon.ico">
     <link rel="stylesheet" href="./assets/css/reset.css">
     <link rel="stylesheet" href="./assets/css/style.css">
+    <!-- Google Font "Fraunces" -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&display=swap"
-        rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&display=swap">
 </head>
 
 <body>
@@ -22,16 +21,21 @@
     <main class="container">
         <div class="col-1">
             <section id="welcome-section">
-                <h1>Welcome to <br>Sequel-ize Stories,</h1>
+                <!-- <h1>Welcome to<br>Sequel-ize
+                        Stories,</span></h1>
+                <br> -->
+                <!-- <h2>A creative writing blog built at the intersection of narrative and nodes.</h2> -->
+                <h1>A creative writing blog built at the intersection of narrative and nodes.</h1>
+
                 <br>
-                <h2>A creative writing blog built at the intersection of narrative and nodes.</h2>
-                <p>This platform serves as a space for writers to categorise and share their tales. Beneath the surface,
-                    it
-                    is a full-stack exploration of modern web development—featuring a Node.js and Express backend, a
-                    MySQL
-                    database, and structured data management via the Sequelize ORM.
+                <p>This platform serves as a space for writers to categorise and share their tales.</p>
+                <p>Beneath the surface, it is a <strong>full-stack</strong> exploration of modern web development—featuring a
+                    <strong>Node.js</strong> and <strong>Express backend</strong>, a
+                    <strong>MySQL database</strong>, and structured data management via the <strong>Sequelize
+                        ORM</strong>.
                 </p>
-                <p>What will your sequel be?</p>
+                <br>
+                <p class="italic text-align-right">What will your sequel be?</p>
             </section>
             <section id="display-posts" class="hidden">
                 <section id="posts-container"></section>
@@ -71,6 +75,9 @@
             <section class="aft-login hidden" id="app-container">
                 <button onclick="logout()">Logout</button>
                 <hr>
+                <h2>Manage Your Posts</h2>
+                <button onclick="fetchUserPosts()">Go to your Posts</button>
+                <hr>
                 <h2>Browse By Category</h2>
                 <select id="filter-category-select">
                     <option value="">Select a Genre</option>
@@ -88,15 +95,12 @@
                     <!-- End Category selector -->
                     <button onclick="createPost()">Submit Post</button>
                 </div>
-                <hr>
-                <h2>Manage Your Posts</h2>
-                <button onclick="fetchUserPosts()">Go to your Posts</button>
             </section>
         </div>
     </main>
 
     <footer>
-        <p> &copy; 2026 Sequel-ize Creative Writing Blog. All rights reserved.</p>
+        <p class="text-align-right"> &copy; 2026 Sequel-ize Creative Writing Blog. All rights reserved.</p>
     </footer>
     <script src="./assets/js/script.js"></script>
 </body>

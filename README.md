@@ -23,7 +23,7 @@ A full-stack monolithic application blog with authentication. Users can view, po
 
 * **Full CRUD Functionality:** Create, read, update, and delete stories.
 * **Dynamic Filtering:** Filter blog posts by specific categories
-* **Responsive Design:** A clean, minimal interface, clearly inspired by Medium.com
+* **Responsive Design:** A clean, minimal interface, very much inspired by Medium.com
 * **Persistent Storage:** Built with a PostgreSQL database
 
 ## Tech Stack
@@ -86,8 +86,8 @@ The app will be running at http://localhost:3001.
 * **/seeds:** Scripts to populate the database with initial samples.
 
 
-## Credentials
+## Credits
 
-**medium.com** inspired the colour theme and font combination.
+**medium.com** inspired the colour scheme and font combination.
 
 Fountain Pen favicon from <a target="_blank" href="https://icons8.com/icon/B6WOInNacWNm/fountain-pen">Fountain Pen</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>

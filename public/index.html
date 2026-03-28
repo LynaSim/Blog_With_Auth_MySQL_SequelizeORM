@@ -8,11 +8,10 @@
     <link rel="icon" type="image/x-icon" href="./assets/img/favicon.ico">
     <link rel="stylesheet" href="./assets/css/reset.css">
     <link rel="stylesheet" href="./assets/css/style.css">
-    <!-- Google Font "Fraunces" -->
+    <!-- Google Free Font "Fraunces" -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&display=swap">
 </head>
 
 <body>
@@ -28,7 +27,7 @@
                 <p>Beneath the surface, it is a <strong>full-stack</strong> exploration of modern web
                     development—featuring a
                     <strong>Node.js</strong> and <strong>Express backend</strong>, a
-                    <strong>MySQL database</strong>, and structured data management via the <strong>Sequelize
+                    <strong>PostgreSQL database</strong>, and structured data management via the <strong>Sequelize
                         ORM</strong>.
                 </p>
                 <br>
@@ -59,8 +58,8 @@
                 <hr>
                 <div>
                     <h2>Register</h2>
-                    <input type="text" id="username" placeholder="Username">
-                    <input type="email" id="email" placeholder="Email">
+                    <input type="text" id="username" autocomplete="username" placeholder="Username">
+                    <input type="email" id="email" autocomplete="email" placeholder="Email">
                     <input type="password" id="password" placeholder="Password">
                     <button onclick="register()">Register</button>
                     <hr>
@@ -72,6 +71,8 @@
             </section>
             <section class="aft-login hidden" id="app-container">
                 <button onclick="logout()">Logout</button>
+                <hr>
+                <button onclick="fetchPosts()">See All Posts</button>
                 <hr>
                 <h2>Manage Your Posts</h2>
                 <button onclick="fetchUserPosts()">Go to your Posts</button>

@@ -6,7 +6,7 @@ let sequelize;
 if (process.env.DATABASE_URL) {
   // RENDER / PRODUCTION MODE
   sequelize = new Sequelize(process.env.DATABASE_URL, {
-    dialect: 'postgres', // <--- THIS is what the error is asking for
+    dialect: 'postgres',
     protocol: 'postgres',
     dialectOptions: {
       ssl: {
@@ -18,13 +18,13 @@ if (process.env.DATABASE_URL) {
 } else {
   // LOCAL DEVELOPMENT MODE
   sequelize = new Sequelize(
-    process.env.DB_NAME,
-    process.env.DB_USER,
+    process.env.DB_DATABASE,
+    process.env.DB_USERNAME,
     process.env.DB_PASSWORD,
     {
       host: 'localhost',
-      dialect: 'postgres', // Make sure this matches your local DB too
-      port: 5432
+      dialect: 'mysql',
+      port: 3306
     }
   );
 }

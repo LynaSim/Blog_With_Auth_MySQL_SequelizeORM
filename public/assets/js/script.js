@@ -24,6 +24,10 @@ function populateCategories() {
 function resetCategories() {
   const categorySelect = document.getElementById("post-category");
   categorySelect.innerHTML = '<option value="">Select a category</option>';
+  const editPostCategorySelect = document.getElementById("edit-post-category");
+  editPostCategorySelect.innerHTML = '<option value="">Select a category</option>';
+  const filterCategorySelect = document.getElementById("filter-category-select");
+  filterCategorySelect.innerHTML = '<option value="">Select a category</option>';
 }
 
 function register() {
@@ -118,12 +122,12 @@ function fetchPosts() {
       posts.forEach((post) => {
         const div = document.createElement("div");
         div.classList.add("div-post");
-        const categoryMap = post.category ? post.category.categoryName : "Uncategorized";
+        const categoryMap = post.category ? post.category.categoryName : "Uncategorised";
         const userMap = post.user ? post.user.username : "Unknown User";
         div.innerHTML = `<h3>${post.title}</h3><div>${post.content
           }</div><div class="post-meta"><small> By: ${userMap} on ${new Date(
             post.createdOn
-          ).toLocaleString()}</small> in category ${categoryMap}</div>`;
+          ).toLocaleString()}</small> in category <span class="category-label">${categoryMap}</span></div>`;
         postsContainer.appendChild(div);
       });
     });
@@ -174,7 +178,7 @@ function fetchUserPosts() {
         <div>${post.content}</div>
         <div class="post-meta"><small> By: ${userMap} on ${new Date(
             post.createdOn
-          ).toLocaleString()}</small> in category ${categoryMap}</div>
+          ).toLocaleString()}</small> in category <span class="category-label">${categoryMap}</span></div>
           <button onclick="editPost(${post.id})">Edit</button>
           <button onclick="deletePost(${post.id})">Delete</button>`;
         postsContainer.appendChild(div);
@@ -276,7 +280,7 @@ function fetchPostsByCat() {
         <div>${post.content}</div>
         <div class="post-meta"><small> By: ${userMap} on ${new Date(
             post.createdOn
-          ).toLocaleString()}</small> in category ${categoryMap}</div>
+          ).toLocaleString()}</small> in category <span class="category-label">${categoryMap}</span></div>
          `;
         postsContainer.appendChild(div);
       });

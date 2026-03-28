@@ -155,3 +155,10 @@ div {
     font-size: 2em;
     margin-bottom: 20px;
 }
+
+.category-label {
+    background-color: #242424;
+    color: white;
+    padding: 1px 3px;
+    border-radius: 5px;
+}

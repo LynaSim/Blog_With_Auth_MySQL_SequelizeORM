@@ -31,9 +31,11 @@ function resetCategories() {
 }
 
 function register() {
+  event.preventDefault();
   const username = document.getElementById("username").value;
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
+  // const registerForm = document.getElementById("register");
   fetch("/api/users", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -45,6 +47,7 @@ function register() {
         alert(data.errors[0].message);
       } else {
         alert("User registered successfully");
+        document.getElementById("register-form").reset();
       }
     })
     .catch((error) => {
@@ -53,6 +56,7 @@ function register() {
 }
 
 function login() {
+  event.preventDefault();
   const email = document.getElementById("login-email").value;
   const password = document.getElementById("login-password").value;
   fetch("/api/users/login", {
@@ -66,13 +70,15 @@ function login() {
       if (data.token) {
         localStorage.setItem("authToken", data.token);
         // Also store the user data in localStorage for later use in createPost()
-        localStorage.setItem("userData", JSON.stringify(data.userData.username));
+        localStorage.setItem("username", JSON.stringify(data.userData.username));
         localStorage.setItem("userId", data.userData.id);
+
 
         token = data.token; // Update the token variable with the new token
 
         alert("Login successful");
-
+        document.getElementById("login-form").reset();
+        
         // Fetch the posts list
         fetchPosts();
 
@@ -99,7 +105,11 @@ function logout() {
   }).then(() => {
     // Clear the token from the local storage as we're now logged out
     localStorage.removeItem("authToken");
+    localStorage.removeItem("username");
+    localStorage.removeItem("userId");
+
     token = null;
+
     document.getElementById("auth-container").classList.remove("hidden");
     document.getElementById("app-container").classList.add("hidden");
     document.getElementById("welcome-section").classList.remove("hidden");
@@ -134,6 +144,8 @@ function fetchPosts() {
 }
 
 function createPost() {
+        event.preventDefault();
+
   const title = document.getElementById("post-title").value;
   const content = document.getElementById("post-content").value;
   // Get the selected category id from the dropdown
@@ -154,6 +166,7 @@ function createPost() {
     .then(() => {
       alert("Post created successfully");
       fetchPosts();
+      document.getElementById("create-new-form").reset();
     });
 }
 
@@ -187,6 +200,8 @@ function fetchUserPosts() {
 }
 
 function editPost(postId) {
+        event.preventDefault();
+
   fetch(`/api/posts/${postId}`,
     {
       method: "GET",
@@ -209,6 +224,8 @@ function editPost(postId) {
 }
 
 function submitEdit() {
+        event.preventDefault();
+
   const postId = document.getElementById("submit-edit-btn").getAttribute("data-id");
   const title = document.getElementById("edit-post-title").value;
   const content = document.getElementById("edit-post-content").value;
@@ -230,9 +247,10 @@ function submitEdit() {
     })
     .then((data) => {
       alert("Post updated successfully");
-      document.getElementById("edit-post-container").classList.add("hidden");
-      document.getElementById("display-posts").classList.remove("hidden");
-      fetchUserPosts();
+      document.getElementById("display-posts").classList.remove("hidden"); // show the posts
+      fetchUserPosts(data); //re-generate the posts after editing
+      document.getElementById("edit-post-container").classList.add("hidden"); // hide edit mode
+      document.getElementById("edit-form").reset(); // reset edit-mode form
     });
 }
 

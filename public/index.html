@@ -41,6 +41,7 @@
             <section>
                 <div id="edit-post-container" class="hidden">
                     <h2>Edit Post</h2>
+                    <form id="edit-form">
                     <input type="text" id="edit-post-title" placeholder="Title">
                     <textarea id="edit-post-content" placeholder="Content" rows="30"></textarea>
                     <!-- Edit Category selector -->
@@ -49,6 +50,7 @@
                     </select>
                     <!-- End Edit Category selector -->
                     <button data-id="" onclick="submitEdit()" id="submit-edit-btn">Submit Edit</button>
+                    </form>
                 </div>
             </section>
         </div>
@@ -58,15 +60,19 @@
                 <hr>
                 <div>
                     <h2>Register</h2>
+                    <form id="register-form">
                     <input type="text" id="username" autocomplete="username" placeholder="Username">
                     <input type="email" id="email" autocomplete="email" placeholder="Email">
                     <input type="password" id="password" placeholder="Password">
                     <button onclick="register()">Register</button>
+                    </form>
                     <hr>
                     <h2>Login</h2>
+                    <form id="login-form">
                     <input type="email" id="login-email" placeholder="Email">
                     <input type="password" id="login-password" placeholder="Password">
                     <button onclick="login()">Login</button>
+                    </form>
                 </div>
             </section>
             <section class="aft-login hidden" id="app-container">
@@ -85,6 +91,7 @@
                 <hr>
                 <div id="create-post-general-container" class="">
                     <h2>Create a Post</h2>
+                    <form id="create-new-form">
                     <input type="text" id="post-title" placeholder="Title">
                     <textarea id="post-content" placeholder="Content" rows="20"></textarea>
                     <!-- Category selector -->
@@ -93,6 +100,7 @@
                     </select>
                     <!-- End Category selector -->
                     <button onclick="createPost()">Submit Post</button>
+                    </form>
                 </div>
             </section>
         </div>

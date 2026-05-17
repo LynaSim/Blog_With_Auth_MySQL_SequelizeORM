@@ -13,10 +13,9 @@ A full-stack monolithic application blog with authentication. Users can view, po
 * CRUD logic
 * RESTful API design.
 
+## Video Preview
 
-## Live Demo
-[View the Live App on Render](https://sequelize-full-stack-blog.onrender.com/)
-
+(https://www.youtube.com/shorts/XT1BehigWEc)
 
 ## Features
 
